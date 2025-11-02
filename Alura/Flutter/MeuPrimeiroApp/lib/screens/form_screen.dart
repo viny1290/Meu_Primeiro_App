@@ -180,6 +180,8 @@ class _FormScreenState extends State<FormScreen> {
                             content: Text('Tarefa adicionada com sucesso!'),
                           ),
                         );
+
+                        Navigator.pop(context);
                       }
                     },
                     child: Text('Adicionar'),

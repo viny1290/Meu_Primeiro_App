@@ -87,15 +87,22 @@ class _TasksState extends State<Tasks> {
                           height: 52,
                           width: 52,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.blue,
+                              padding: EdgeInsets.zero,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              )
+                            ),
                             onPressed: levelUp,
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: const [
-                                Icon(Icons.arrow_drop_up),
+                                Icon(Icons.arrow_drop_up, color: Colors.white,),
                                 Text(
                                   'UP',
-                                  style: TextStyle(fontSize: 12),
+                                  style: TextStyle(fontSize: 12, color: Colors.white),
                                 ),
                               ],
                             ),
