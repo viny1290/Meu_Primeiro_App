@@ -5,7 +5,9 @@ import 'package:meu_primeiro_app/data/task_inherited.dart';
 // Cria um StatefulWidget, que é um widget que pode ter seu estado alterado.
 // Ideal para formulários, animações ou qualquer tela que precise ser redesenhada.
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  const FormScreen({super.key, required this.taskContext});
+
+  final BuildContext taskContext;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -171,7 +173,7 @@ class _FormScreenState extends State<FormScreen> {
                       // Verifica se todos os validadores do formulário retornam null.
                       if (_formKey.currentState!.validate()) {
                         // Se for válido, cria a tarefa.
-                        TaskInherited.of(context).newTask(nameController.text, imageController.text, int.parse(difficultyController.text));
+                        TaskInherited.of(widget.taskContext).newTask(nameController.text, imageController.text, int.parse(difficultyController.text));
 
                         // Mostra uma mensagem de sucesso na parte inferior da tela.
                         ScaffoldMessenger.of(context).showSnackBar(
