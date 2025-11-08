@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meu_primeiro_app/data/task_inherited.dart';
 import 'package:meu_primeiro_app/screens/form_screen.dart';
 import '../components/tasks.dart';
 
@@ -27,17 +28,7 @@ class _InitialScreenState extends State<InitialScreen> {
       body: Container(
         color: Color.fromARGB(255, 208, 221, 237),
         child: ListView(
-          children: const [
-            Padding(
-              padding: EdgeInsets.only(top: 8),
-              child: Tasks('Estudar Flutter', 'assets/images/flutter.png', 3),
-            ),
-            Tasks('Andar de Bike', 'assets/images/bike.webp', 2),
-            Tasks('Ler 50 páginas', 'assets/images/ler.jpg', 1),
-            Tasks('Meditar', 'assets/images/meditar.jpeg', 4),
-            Tasks('Jogar','assets/images/jogar.jpg',0,),
-            SizedBox(height: 100,),
-          ],
+          children: TaskInherited.of(context).taskList,
         ),
       ),
       floatingActionButton: FloatingActionButton(

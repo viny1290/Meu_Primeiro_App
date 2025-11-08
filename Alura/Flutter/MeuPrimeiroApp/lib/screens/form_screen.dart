@@ -1,5 +1,6 @@
 // Importa o pacote principal do Flutter para construir a interface do usuário.
 import 'package:flutter/material.dart';
+import 'package:meu_primeiro_app/data/task_inherited.dart';
 
 // Cria um StatefulWidget, que é um widget que pode ter seu estado alterado.
 // Ideal para formulários, animações ou qualquer tela que precise ser redesenhada.
@@ -169,10 +170,8 @@ class _FormScreenState extends State<FormScreen> {
                     onPressed: () {
                       // Verifica se todos os validadores do formulário retornam null.
                       if (_formKey.currentState!.validate()) {
-                        // Se for válido, imprime os valores no console.
-                        print(nameController.text);
-                        print(int.parse(difficultyController.text));
-                        print(imageController.text);
+                        // Se for válido, cria a tarefa.
+                        TaskInherited.of(context).newTask(nameController.text, imageController.text, int.parse(difficultyController.text));
 
                         // Mostra uma mensagem de sucesso na parte inferior da tela.
                         ScaffoldMessenger.of(context).showSnackBar(
