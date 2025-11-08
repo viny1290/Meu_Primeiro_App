@@ -24,6 +24,24 @@ class _FormScreenState extends State<FormScreen> {
   // É usada para validar o formulário.
   final _formKey = GlobalKey<FormState>();
 
+  bool valueValidator(String? value){
+    if(value != null && value.isEmpty){
+      return true;
+    }
+
+    return false;
+  }
+
+  bool difficultyValidator(String? value){
+    if(value != null && value.isEmpty){
+      if(int.parse(value) > 5 || int.parse(value) < 1){
+        return true;
+      }
+    }
+
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     // O widget Form atua como um contêiner para agrupar e validar
@@ -64,7 +82,7 @@ class _FormScreenState extends State<FormScreen> {
                     child: TextFormField(
                       // Função de validação para o campo.
                       validator: (String? value) {
-                        if (value != null && value.isEmpty) {
+                        if (valueValidator(value)) {
                           return 'Insira o nome da Tarefa'; // Mensagem de erro se o campo estiver vazio.
                         }
                         return null; // Retorna null se a validação passar.
@@ -85,9 +103,7 @@ class _FormScreenState extends State<FormScreen> {
                     child: TextFormField(
                       // Validador para garantir que a dificuldade seja um número entre 1 e 5.
                       validator: (value) {
-                        if (value!.isEmpty ||
-                            int.parse(value) > 5 ||
-                            int.parse(value) < 1) {
+                        if (difficultyValidator(value)) {
                           return 'Insira a dificuldade da Tarefa entre 1 e 5';
                         }
                         return null;
@@ -108,7 +124,7 @@ class _FormScreenState extends State<FormScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (String? value) {
-                        if (value!.isEmpty) {
+                        if (valueValidator(value)) {
                           return 'Insira uma URL válida da Tarefa';
                         }
                         return null;

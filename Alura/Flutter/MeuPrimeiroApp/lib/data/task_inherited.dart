@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart';
-import 'package:meu_primeiro_app/components/tasks.dart';
+import 'package:meu_primeiro_app/components/task.dart';
 
 class TaskInherited extends InheritedWidget {
   TaskInherited({
@@ -7,10 +7,10 @@ class TaskInherited extends InheritedWidget {
     required Widget child,
   }) : super(key: key, child: child);
 
-  final List<Tasks> taskList = [];
+  final List<Task> taskList = [];
 
   void newTask(String name, String photo, int difficulty){
-    taskList.add(Tasks(name, photo, difficulty));
+    taskList.add(Task(name, photo, difficulty));
   }
 
   static TaskInherited of(BuildContext context) {
